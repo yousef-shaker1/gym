@@ -63,9 +63,30 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="d-flex justify-content-center my-4">
-                            {{ $teams->links() }}
-                        </div>
+                        @if ($teams->hasPages())
+                        <ul class="pagination justify-content-center">
+                            <!-- زر الصفحة السابقة -->
+                            @if ($teams->onFirstPage())
+                                <li class="page-item disabled"><span class="page-link">السابق</span></li>
+                            @else
+                                <li class="page-item"><a href="{{ $teams->previousPageUrl() }}" class="page-link" rel="prev">السابق</a></li>
+                            @endif
+                    
+                            <!-- أرقام الصفحات -->
+                            @foreach(range(1, $teams->lastPage()) as $page)
+                                <li class="page-item {{ $page == $teams->currentPage() ? 'active' : '' }}">
+                                    <a href="{{ $teams->url($page) }}" class="page-link">{{ $page }}</a>
+                                </li>
+                            @endforeach
+                    
+                            <!-- زر الصفحة التالية -->
+                            @if ($teams->hasMorePages())
+                                <li class="page-item"><a href="{{ $teams->nextPageUrl() }}" class="page-link" rel="next">التالي</a></li>
+                            @else
+                                <li class="page-item disabled"><span class="page-link">التالي</span></li>
+                            @endif
+                        </ul>
+                    @endif
                     </div>
                 </div>
             </div>
