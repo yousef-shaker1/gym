@@ -141,23 +141,23 @@ home page
 <!-- Banner Section End -->
 
 <!-- Gallery Section Begin -->
-<div class="gallery-section">
-    <div class="gallery">
-      <div class="grid-sizer"></div>
-      @foreach ($photos as $photo)   
-        <div class="gs-item">
-          <a href="{{ Storage::url($photo->img) }}" class="image-popup">
-            <img src="{{ Storage::url($photo->img) }}" alt="Gallery Image" class="gallery-img">
-          </a>
+    <div class="gallery-section" style="margin-bottom: 0; padding-bottom: 0;">
+        <div class="gallery">
+          <div class="grid-sizer"></div>
+          @foreach ($photos as $photo)   
+            <div class="gs-item">
+              <a href="{{ Storage::url($photo->img) }}" class="image-popup">
+                <img src="{{ Storage::url($photo->img) }}" alt="Gallery Image" class="gallery-img">
+              </a>
+            </div>
+          @endforeach
         </div>
-      @endforeach
-    </div>
-  </div>
+      </div>
 <!-- Gallery Section End -->
 
 <!-- Team Section Begin -->
-<section class="team-section spad">
-  <div class="container">
+<section class="team-section spad" style="margin-top: 0; padding-top: 0;">
+    <div class="container">
       <div class="row">
           <div class="col-lg-12">
               <div class="team-title">

@@ -82,7 +82,7 @@ aboutus
           <div class="row">
               <div class="col-lg-6 p-0">
                   <div class="about-video set-bg" data-setbg="{{ URL::asset('assets/img/about-us.jpg') }}">
-                      <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i
+                      <a href="https://www.youtube.com/watch?v=HQfF5XRVXjU" class="play-btn video-popup"><i
                               class="fa fa-caret-right"></i></a>
                   </div>
               </div>
