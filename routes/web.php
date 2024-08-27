@@ -39,6 +39,7 @@ Route::get('/calculator',[UserpageController::class, 'calculator'])->name('calcu
 Route::get('/blog',[UserpageController::class, 'blog'])->name('blog');
 Route::get('/contact',[UserpageController::class, 'contact'])->name('contact');
 Route::get('/show_user',[UserpageController::class, 'show_user'])->name('show_user');
+Route::get('/show_post',[UserpageController::class, 'show_post'])->name('show_post');
 Route::delete('/delete_customer/{id}',[UserpageController::class, 'delete_customer'])->name('delete_customer');
 
 Route::get('/dashboard', [UserpageController::class, 'admin_page'])->middleware(['auth', 'verified','Is_admin'])->name('dashboard');

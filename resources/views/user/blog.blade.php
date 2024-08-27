@@ -33,92 +33,55 @@ blog
   <div class="container">
       <div class="row">
           <div class="col-lg-8 p-0">
-              <div class="blog-item">
-                  <div class="bi-pic">
-                      <img src="{{ URL::asset('assets/img/blog/blog-1.jpg') }}" alt="">
-                  </div>
-                  <div class="bi-text">
-                      <h5><a href="./blog-details.html">Vegan White Peach Mug Cobbler With Cardam Vegan White Peach Mug
-                              Cobbler...</a></h5>
-                      <ul>
-                          <li>by Admin</li>
-                          <li>Aug,15, 2019</li>
-                          <li>20 Comment</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua accumsan lacus facilisis.</p>
-                  </div>
-              </div>
-              <div class="blog-item">
-                  <div class="bi-pic">
-                      <img src="{{ URL::asset('assets/img/blog/blog-2.jpg') }}" alt="">
-                  </div>
-                  <div class="bi-text">
-                      <h5><a href="./blog-details.html">Vegan White Peach Mug Cobbler With Cardam Vegan White Peach Mug
-                              Cobbler...</a></h5>
-                      <ul>
-                          <li>by Admin</li>
-                          <li>Aug,15, 2019</li>
-                          <li>20 Comment</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua accumsan lacus facilisis.</p>
-                  </div>
-              </div>
-              <div class="blog-item">
-                  <div class="bi-pic">
-                      <img src="{{ URL::asset('assets/img/blog/blog-3.jpg') }}" alt="">
-                  </div>
-                  <div class="bi-text">
-                      <h5><a href="./blog-details.html">Vegan White Peach Mug Cobbler With Cardam Vegan White Peach Mug
-                              Cobbler...</a></h5>
-                      <ul>
-                          <li>by Admin</li>
-                          <li>Aug,15, 2019</li>
-                          <li>20 Comment</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua accumsan lacus facilisis.</p>
-                  </div>
-              </div>
-              <div class="blog-item">
-                  <div class="bi-pic">
-                      <img src="{{ URL::asset('assets/img/blog/blog-4.jpg') }}" alt="">
-                  </div>
-                  <div class="bi-text">
-                      <h5><a href="./blog-details.html">Vegan White Peach Mug Cobbler With Cardam Vegan White Peach Mug
-                              Cobbler...</a></h5>
-                      <ul>
-                          <li>by Admin</li>
-                          <li>Aug,15, 2019</li>
-                          <li>20 Comment</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua accumsan lacus facilisis.</p>
-                  </div>
-              </div>
-              <div class="blog-item">
-                  <div class="bi-pic">
-                      <img src="{{ URL::asset('assets/img/blog/blog-5.jpg') }}" alt="">
-                  </div>
-                  <div class="bi-text">
-                      <h5><a href="./blog-details.html">Vegan White Peach Mug Cobbler With Cardam Vegan White Peach Mug
-                              Cobbler...</a></h5>
-                      <ul>
-                          <li>by Admin</li>
-                          <li>Aug,15, 2019</li>
-                          <li>20 Comment</li>
-                      </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua accumsan lacus facilisis.</p>
-                  </div>
-              </div>
-              <div class="blog-pagination">
-                  <a href="#">1</a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#">Next</a>
-              </div>
+            @foreach ($posts as $post)
+                
+            <div class="blog-item">
+                <div class="bi-pic">
+                    <img src="{{ Storage::url($post->img) }}" alt="">
+                </div>
+                <div class="bi-text">
+                    <h5><a href="">{{ $post->title }}</a></h5>
+                        <ul>
+                            <li>{{ $post->Written_by }}</li>
+                            <li>{{ $post->date }}</li>
+                        </ul>
+                        <p>{{ $post->description }}</p>
+                        </div>
+                    </div>
+            @endforeach
+            @if ($posts->hasPages())
+    <ul class="pagination justify-content-center">
+        <!-- زر الصفحة السابقة -->
+        @if ($posts->onFirstPage())
+            <li class="page-item disabled">
+                <span class="page-link bg-dark text-white">&laquo; السابق</span>
+            </li>
+        @else
+            <li class="page-item">
+                <a href="{{ $posts->previousPageUrl() }}" class="page-link bg-dark text-white" rel="prev">&laquo; السابق</a>
+            </li>
+        @endif
+
+        <!-- أرقام الصفحات -->
+        @foreach (range(1, $posts->lastPage()) as $page)
+            <li class="page-item {{ $page == $posts->currentPage() ? 'active' : '' }}">
+                <a href="{{ $posts->url($page) }}" class="page-link {{ $page == $posts->currentPage() ? 'bg-primary' : 'bg-dark text-white' }}">{{ $page }}</a>
+            </li>
+        @endforeach
+
+        <!-- زر الصفحة التالية -->
+        @if ($posts->hasMorePages())
+            <li class="page-item">
+                <a href="{{ $posts->nextPageUrl() }}" class="page-link bg-dark text-white" rel="next">التالي &raquo;</a>
+            </li>
+        @else
+            <li class="page-item disabled">
+                <span class="page-link bg-dark text-white">التالي &raquo;</span>
+            </li>
+        @endif
+    </ul>
+@endif
+
           </div>
           <div class="col-lg-4 col-md-8 p-0">
               <div class="sidebar-option">

@@ -4,7 +4,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addimgLabel">Create Section</h5>
+                    <h5 class="modal-title" id="addimgLabel">add photo</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" wire:click="closeModal">&times;</button>
                 </div>
                 <form wire:submit.prevent="saveImg">
@@ -32,7 +32,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateimgModalLabel">Edit Student</h5>
+                    <h5 class="modal-title" id="updateimgModalLabel">Edit photo</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
                     wire:click="closeModal">&times;</button>
                 </div>
@@ -68,7 +68,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteImgModalLabel">Delete Student</h5>
+                    <h5 class="modal-title" id="deleteImgModalLabel">Delete photo</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
                     wire:click="closeModal">&times;</button>
                 </div>

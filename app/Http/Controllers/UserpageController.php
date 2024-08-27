@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\day;
+use App\Models\post;
 use App\Models\Team;
 use App\Models\time;
 use App\Models\User;
@@ -58,7 +59,8 @@ class UserpageController extends Controller
 
     public function blog(){
         $sections = Section::get();
-        return view('user.blog', compact('sections'));
+        $posts = post::paginate(4);
+        return view('user.blog', compact('sections', 'posts'));
     }
 
     public function contact(){
@@ -68,6 +70,10 @@ class UserpageController extends Controller
     public function show_user(){
         $customers = Customer::paginate(8);
         return view('admin.show_user', compact('customers'));
+    }
+    
+    public function show_post(){
+        return view('admin.show_post');
     }
 
     public function delete_customer(checkcustomer $request, $i){
