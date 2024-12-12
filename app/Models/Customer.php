@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Customer extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = ['name', 'email', 'password', 'phone', 'age', 'birthdate', 'address'];
 
     
 }

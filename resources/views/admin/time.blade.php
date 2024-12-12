@@ -93,7 +93,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            @if ($times->hasPages())
                             <ul class="pagination justify-content-center">
                                 <!-- زر الصفحة السابقة -->
                                 @if ($times->onFirstPage())
@@ -116,7 +115,6 @@
                                     <li class="page-item disabled"><span class="page-link">التالي</span></li>
                                 @endif
                             </ul>
-                        @endif
     
                         </div>
                     </div>

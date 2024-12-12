@@ -39,13 +39,16 @@
                 <form wire:submit.prevent="updateImg">
                     <div class="modal-body">
                         
-                        <div class="mb-3">
-                            <label for="current_img" class="col-form-label">الصورة الحالية للقسم:</label>
-                            <br>
-                            <a id="current_img_link" href="{{ Storage::url($img) }}"><img id="" src="{{ Storage::url($img) }}"
-                                    style="width: 80px; height: 50px;"></a>
-                            <br>
-                        </div>
+                        @if ($this->img && is_object($this->img))
+                            <div>
+                                <img src="{{ $this->img->temporaryUrl() }}" style="width: 80px; height: 50px;">
+                            </div>
+                        @elseif ($this->img)
+                            <a id="current_img_link" href="{{ Storage::url($this->img) }}">
+                                <img id="" src="{{ Storage::url($this->img) }}" style="width: 80px; height: 50px;">
+                            </a>
+                        @endif
+
                         <div class="mb-3">
                             <label>ارفع صورة</label>
                             <input type="file" wire:model.live="img" class="form-control">
