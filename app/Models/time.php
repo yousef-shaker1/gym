@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class time extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = ['section_id', 'day_id', 'time'];
 
     public function section()
     {

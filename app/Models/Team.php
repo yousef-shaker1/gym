@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Team extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = ['img', 'name', 'age', 'section_id'];
 
     public function section()
     {

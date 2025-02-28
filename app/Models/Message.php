@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Message extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = ['customer_id', 'message'];
 
     public function customer()
     {

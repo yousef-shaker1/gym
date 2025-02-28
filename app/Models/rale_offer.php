@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class rale_offer extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = ['offer_id', 'section_id', 'price'];
 
     public function section()
     {
