@@ -12,10 +12,12 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
+    use ApirequestTrait;
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+        
+        
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 400);
@@ -23,8 +25,16 @@ class AuthController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
-        return response()->json(compact('token'));
+        $user = JWTAuth::user();
+        $date = [
+            'token' => $token,
+            'user' => [
+                'name' => $user->name,
+                'email' => $user->email,
+                'roles_name' => $user->roles_name
+            ]
+        ];
+        return $this->apiResponse($date);
     }
 
     public function register(Request $request)
